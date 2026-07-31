@@ -4,6 +4,10 @@ const productSchema = new mongose.Schema({
     type: String,
     required: true
   },
+  size: {
+    type: String,
+    required: true
+  },
   description: {
     type: String,
     required: true
@@ -15,10 +19,16 @@ const productSchema = new mongose.Schema({
   quantity: {
     type: Number,
     required: true
+  },
+  color: {
+    type: String,
   }
+  
 }, 
 {timestamps: true}
 );
 
 //create model from schema
 const Product = mongose.model("Product", productSchema);
+
+module.exports = Product;    //export the model to use in other files

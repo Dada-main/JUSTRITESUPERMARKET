@@ -19,18 +19,24 @@ const userSchema = new mongose.Schema({
     type: String,
     required: true
   },
+  HasAdminAccess: {
+    type: Boolean,
+    default: false
+  },
   phone: {
     type: String,
     required: true
   },
   roles: {
     type: String,
-    enum: ["admin", "user"],
-    default: "user"
-  }
+    enum: ["superadmin", "storekeeper", "salesperson"],
+    default: "salesperson"
+  },
 },
  {timestamps: true}   //date created and updated at
 );
 
 //create model from schema
 const User = mongose.model("User", userSchema);
+
+module.exports = User;    //export the model to use in other files
